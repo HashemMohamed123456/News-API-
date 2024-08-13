@@ -7,7 +7,7 @@ Widget buildArticleItem({article,context,launchUrl})=>Padding(
         width: 120,
         height: 120,
         decoration: BoxDecoration(
-           color: Colors.deepOrange[200],
+           color: Colors.blueGrey,
             borderRadius: BorderRadius.circular(25)
         ),
         child: Center(child: Padding(
@@ -38,7 +38,7 @@ Widget buildArticleItem({article,context,launchUrl})=>Padding(
 );
 Widget textFormFieldCustom({
   TextEditingController? controller,
-  String? label,
+  String? hint,
   IconData? prefix,
   IconData? suffix,
   String? Function(String?)? validator,
@@ -54,17 +54,17 @@ Widget textFormFieldCustom({
   validator: validator,
   controller: controller,
   decoration: InputDecoration(
-      labelStyle:const TextStyle(
+      hintStyle:const TextStyle(
       fontSize: 20,
-      color:Colors.black,
+      color:Colors.white,
       fontWeight: FontWeight.bold
   ),
       suffixIcon: Icon(suffix),
       suffixIconColor: Colors.black,
-      prefixIconColor: Colors.black,
-      fillColor: Colors.white,
+      prefixIconColor: Colors.white,
+      fillColor: Colors.blueGrey,
       filled: true,
-      labelText:label??'',
+      hintText:hint??'',
       prefixIcon: Icon(prefix),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25),
@@ -72,7 +72,7 @@ Widget textFormFieldCustom({
       focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(
             width: 3,
-            color: Colors.blue
+            color: Colors.blueGrey
         ),
       ),
       enabledBorder: const OutlineInputBorder(

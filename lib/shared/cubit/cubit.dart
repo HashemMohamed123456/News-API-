@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/modules/business/business_screen.dart';
 import 'package:news/modules/science/science_screen.dart';
@@ -26,14 +27,15 @@ int currentIndex=0;
     emit(ChangedNavBarIndexState());
   }
   List<Widget>screens=[
-    BusinessScreen(),
-    SportsScreen(),
-    ScienceScreen(),
+    const BusinessScreen(),
+    const SportsScreen(),
+    const ScienceScreen(),
   ];
   List<dynamic>businessTopics=[];
   List<dynamic>sportsTopics=[];
   List<dynamic>scienceTopics=[];
   List<dynamic>search=[];
+  TextEditingController searchController=TextEditingController();
   void getBusinessData(){
     emit(GettingBusinessDataLoadingState());
     DioHelper.getData(url: 'v2/top-headlines', query:{

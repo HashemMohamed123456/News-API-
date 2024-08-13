@@ -6,8 +6,7 @@ import 'package:news/shared/cubit/change_mode_cubit/change_mode_states.dart';
 import 'package:news/shared/cubit/cubit.dart';
 import 'package:news/shared/cubit/states.dart';
 class SearchScreen extends StatelessWidget {
-  var searchController=TextEditingController();
-    SearchScreen({super.key});
+    const SearchScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -44,8 +43,8 @@ class SearchScreen extends StatelessWidget {
                     onChanged: (String value){
                     NewsAppCubit.get(context).searchForArticles(value);
                     },
-                controller:searchController,
-                label: 'Search',
+                controller:NewsAppCubit.get(context).searchController,
+                hint: 'Search',
                 prefix: Icons.search
                 ),
               ),

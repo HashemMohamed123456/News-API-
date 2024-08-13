@@ -14,13 +14,13 @@ void main()async{
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
-  bool isDark=CacheHelper.getBool(key: SharedKeys.isDark);
-  runApp(MyApp(isDark));
+  bool? isDark=CacheHelper.getBool(key: SharedKeys.isDark);
+  runApp(MyApp(isDark??false));
 }
 
 class MyApp extends StatelessWidget {
   final bool isDark;
-  MyApp(this.isDark);
+  const MyApp(this.isDark);
 
   // This widget is the root of your application.
   @override
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               darkTheme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange,primary: Colors.deepOrange),
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey,primary: Colors.blue),
                 useMaterial3: true,
                 textTheme: const TextTheme(
                     bodyLarge: TextStyle(
@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
                 bottomNavigationBarTheme: BottomNavigationBarThemeData(
                     backgroundColor:HexColor('333739'),
                     type:BottomNavigationBarType.fixed,
-                    selectedItemColor: Colors.deepOrange,
+                    selectedItemColor: Colors.blueGrey,
                     elevation: 20,
                     unselectedItemColor: Colors.white
                 ),
@@ -102,11 +102,11 @@ class MyApp extends StatelessWidget {
                 bottomNavigationBarTheme:const  BottomNavigationBarThemeData(
                     backgroundColor: Colors.white,
                     type:BottomNavigationBarType.fixed,
-                    selectedItemColor: Colors.deepOrange,
+                    selectedItemColor: Colors.blueGrey,
                     unselectedItemColor: Colors.grey,
                     elevation: 20
                 ),
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange,primary: Colors.deepOrange),
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange,primary: Colors.blue),
                 useMaterial3: true,
               ),
               home: const NewsLayout()

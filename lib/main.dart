@@ -6,22 +6,27 @@ import 'package:news/layout/news_layout.dart';
 import 'package:news/shared/bloc_observer/bloc_observer.dart';
 import 'package:news/shared/cubit/change_mode_cubit/change_mode_cubit.dart';
 import 'package:news/shared/cubit/change_mode_cubit/change_mode_states.dart';
+import 'package:news/shared/network/local/cache_helper/cache_helper.dart';
+import 'package:news/shared/network/local/keys/keys.dart';
 import 'package:news/shared/network/remote/dio_helper/dio_helper.dart';
-void main(){
+void main()async{
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
-  runApp(const MyApp());
+  await CacheHelper.init();
+  bool isDark=CacheHelper.getBool(key: SharedKeys.isDark);
+  runApp(MyApp(isDark));
 }
 
 class MyApp extends StatelessWidget {
- const MyApp({super.key});
+  final bool isDark;
+  MyApp(this.isDark);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=>ChangeAppModeCubit()..changeAppMode(),
+      create: (context)=>ChangeAppModeCubit()..changeAppMode(fromShared: isDark),
       child: BlocConsumer<ChangeAppModeCubit,ChangeModeStates>(
         listener: (context,state){},
         builder: (context,state){

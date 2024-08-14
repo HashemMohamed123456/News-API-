@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news/model/apiObject.dart';
 import 'package:news/modules/business/business_screen.dart';
 import 'package:news/modules/science/science_screen.dart';
 import 'package:news/modules/sports/sports_screen.dart';
@@ -36,6 +37,7 @@ int currentIndex=0;
   List<dynamic>scienceTopics=[];
   List<dynamic>search=[];
   TextEditingController searchController=TextEditingController();
+  ApiObject? apiObject;
   void getBusinessData(){
     emit(GettingBusinessDataLoadingState());
     DioHelper.getData(url: 'v2/top-headlines', query:{
